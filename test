@@ -1,0 +1,266 @@
+#!/bin/bash
+
+echo
+dir=$(pwd)
+echo -e "Your current directory is: $dir "
+
+echo
+while true; do
+	echo "Select an option [1-9]"
+	echo "-----------------------"
+	echo "1.Create a new directory"
+	echo "2.Delete an existing directory"
+	echo "3.List the contents of a directory"
+	echo "4.Change into a directory"
+	echo "5.Create a new file"
+	echo "6.Write to an existing file"
+	echo "7.Read from an existing file"
+	echo "8.Delete an existing file"
+	echo "9.Exit the script."
+
+	read choice
+
+case $choice in
+	1)	
+		echo "Enter the name of the newdirectory:"
+		read dirname
+		
+		if [ -d $dir/$dirname ]
+		then
+			echo -e "Directory name already exist"
+			echo -e "Choose another name"
+			echo
+		else
+			mkdir $dirname
+		fi
+		;;
+	
+	2)
+		echo "Enter the name of the directory to delete:"
+		read deldir
+		
+		if ! [ -d $dir/$deldir ]
+		then
+			echo -e "Directory do not exist"
+			echo
+		else
+			rm -rf $deldir
+			echo
+		fi
+
+		if [ $? -eq 0 ]
+		then
+			echo "Successful"
+			echo
+		else
+			echo "Not Successful"
+			echo
+		fi
+		;;
+	
+	3)
+	
+		echo  "Are you in the right directory (y/n): "
+		read input	
+		
+		if [ $input == "n" ]
+		then
+			echo -e "Change your directory"
+			echo
+				
+		elif [ $input == "y" ]
+		then 
+		
+			ls -l
+ 			echo
+		else 
+			
+			echo "Wrong choice"
+			echo "Enter y or n"
+			echo
+		fi
+		
+		
+		if [ $? -eq 0 ]
+		then
+			echo "Successful"
+			echo
+		else
+			echo "Not Successful"
+			echo
+		fi
+		;;
+	4)
+	
+		echo "Enter the name of the directory:"
+		read chdir
+		if ! [ -d $dir/$chdir ]
+		then
+			echo -e "Directory do not exist"
+			echo -e "Choose another name"
+			echo
+		else
+			cd $chdir
+			echo
+		fi
+		if [ $? -eq 0 ]
+		then
+			echo Successful
+			echo
+		else
+			echo Not Successful
+			echo
+		fi
+		;;
+		
+	5)
+		echo "Are you in the right directory (y/n): "
+		read input
+	
+		if [ $input == "n" ]
+		then
+			echo -e "Change your directory"
+			echo
+		elif [ $input == "y" ]
+		then 
+			echo -e "Enter the new file name"
+			read newfile
+			if [ -f $dir/$newfile ]
+			then
+				echo -e "File name already exist"
+				echo -e "Choose another name"
+				echo
+			else
+				touch $newfile
+				echo
+ 			fi	
+		else 
+			
+			echo "Wrong choice"
+			echo "Enter y or n"
+			echo
+				
+		fi
+
+		if [ $? -eq 0 ]
+		then
+			echo Successful
+		else
+			echo Not Successful
+			echo
+		fi
+		;;
+	
+	6)
+	
+		echo "Are you in the right directory (y/n): "
+		read input
+		echo
+	
+		if [ $input == "n" ]
+		then
+			echo -e "Change your directory"
+				
+		elif [ $input == "y" ]
+		then 
+			echo -e "Enter the file name"
+			read writefile
+			if ! [ -f $dir/$writefile ]
+			then
+				echo -e "File name do not exist"
+				echo -e "Choose another name"
+				echo
+			else
+				cat >> $writefile
+			fi
+				
+ 		else 
+			
+			echo "Wrong choice"
+			echo "Enter y or n"
+			echo	
+		fi
+		
+		if [ $? -eq 0 ]
+		then
+			echo Successful
+		else
+			echo Not Successful
+			echo
+		fi
+		;;
+	7)
+	
+		echo "Are you in the right directory (y/n): "
+		read input
+		echo
+		if [ $input == "n" ]
+		then
+			echo -e "Change your directory"
+		elif [ $input == "y" ]
+		then	
+			echo "Enter the name of file: "
+			read readfile
+			if ! [ -f $dir/$readfile ]
+			then
+				echo -e "File name do not exist"
+				echo -e "Choose another name"
+				echo
+			else
+				cat $readfile
+			fi
+		else
+			echo -e "Wrong Choice"
+			echo -e "Enter y or n"
+		echo
+		fi
+				
+		if [ $? -eq 0 ]
+		then
+			echo Successful
+		else
+			echo Not Successful
+		echo
+		fi
+		;;
+	
+	8)
+	
+		echo "Are you in the right directory (y/n): "
+		read input
+		echo
+	
+		if [ $input == "n" ]
+		then
+			echo -e "Change your directory"
+		elif [ $input == "y" ]
+		then
+			echo "Enter the name of file: "
+			read delfile
+			if ! [ -f $dir/$delfile ]
+			then
+				echo -e "File name do not exist"
+				echo -e "Choose another name"
+				echo
+			else
+				rm $delfile
+			fi
+		else 
+			echo -e "Wrong Choice"
+			echo -e "Enter y or n"
+			echo
+		fi
+		
+		if [ $? -eq 0 ]
+		then
+			echo Successful
+		else
+			echo Not Successful
+			echo
+		fi
+		;;
+	9)
+		exit 1
+		;;
+esac
+done
