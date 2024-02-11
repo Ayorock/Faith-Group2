@@ -22,6 +22,7 @@ while true; do
 
 case $choice in
 	1)	
+		dir=$(pwd)
 		echo "Enter the name of the newdirectory:"
 		read dirname
 		
@@ -36,6 +37,7 @@ case $choice in
 		;;
 	
 	2)
+		dir=$(pwd)
 		echo "Enter the name of the directory to delete:"
 		read deldir
 		
@@ -91,7 +93,7 @@ case $choice in
 		fi
 		;;
 	4)
-	
+		dir=$(pwd)
 		echo "Enter the name of the directory:"
 		read chdir
 		if ! [ -d $dir/$chdir ]
@@ -114,6 +116,7 @@ case $choice in
 		;;
 		
 	5)
+		dir=$(pwd)
 		echo "Are you in the right directory (y/n): "
 		read input
 	
@@ -152,7 +155,7 @@ case $choice in
 		;;
 	
 	6)
-	
+		dir=$(pwd)
 		echo "Are you in the right directory (y/n): "
 		read input
 		echo
@@ -190,7 +193,7 @@ case $choice in
 		fi
 		;;
 	7)
-	
+		dir=$(pwd)
 		echo "Are you in the right directory (y/n): "
 		read input
 		echo
@@ -225,7 +228,7 @@ case $choice in
 		;;
 	
 	8)
-	
+		dir=$(pwd)
 		echo "Are you in the right directory (y/n): "
 		read input
 		echo
