@@ -148,6 +148,7 @@ case $choice in
 		if [ $? -eq 0 ]
 		then
 			echo Successful
+			echo
 		else
 			echo Not Successful
 			echo
@@ -187,6 +188,7 @@ case $choice in
 		if [ $? -eq 0 ]
 		then
 			echo Successful
+			echo
 		else
 			echo Not Successful
 			echo
@@ -221,9 +223,10 @@ case $choice in
 		if [ $? -eq 0 ]
 		then
 			echo Successful
+			echo
 		else
 			echo Not Successful
-		echo
+			echo
 		fi
 		;;
 	
@@ -257,6 +260,7 @@ case $choice in
 		if [ $? -eq 0 ]
 		then
 			echo Successful
+			echo
 		else
 			echo Not Successful
 			echo
